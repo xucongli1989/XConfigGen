@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<XConfig>
+    <EnvironmentList>
+        <Environment>DEV</Environment>
+        <Environment>FAT</Environment>
+        <Environment>UAT</Environment>
+        <Environment>PRD</Environment>
+    </EnvironmentList>
+    <DEV>
+        <HostUrl>http://www.dev.com</HostUrl>
+        <AppID>123456</AppID>
+        <SysEnvironment>DEV</SysEnvironment>
+    </DEV>
+    <FAT>
+        <HostUrl>http://www.fat.com</HostUrl>
+        <AppID>123456</AppID>
+        <SysEnvironment>FAT</SysEnvironment>
+    </FAT>
+    <UAT>
+        <HostUrl>http://www.uat.com</HostUrl>
+        <AppID>123456</AppID>
+        <SysEnvironment>UAT</SysEnvironment>
+    </UAT>
+    <PRD>
+        <HostUrl>http://www.prd.com</HostUrl>
+        <AppID>123456</AppID>
+        <SysEnvironment>PRD</SysEnvironment>
+    </PRD>
+</XConfig>
