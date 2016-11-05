@@ -107,4 +107,10 @@
 	注：可以在Visual Studio的生成事件中加入此命令（或bat）来生成您的配置文件。
 
 
+### 截图
+
+![](https://raw.githubusercontent.com/xucongli1989/XConfigGen/master/imgs/1.jpg)
+
+
+![](https://raw.githubusercontent.com/xucongli1989/XConfigGen/master/imgs/2.jpg)
 
