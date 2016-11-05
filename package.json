@@ -1,0 +1,27 @@
+{
+  "name": "xconfiggen",
+  "version": "1.0.0",
+  "description": "这是一个用于生成不同环境的项目配置文件的小命令行工具，比如：需要在开发环境、测试环境、生产环境生成节点相同但内容不同的配置文件。 ",
+  "main": "gulpfile.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "minimist": "^1.2.0"
+  },
+  "scripts": {
+    "test": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xucongli1989/XConfigGen.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xucongli1989/XConfigGen/issues"
+  },
+  "homepage": "https://github.com/xucongli1989/XConfigGen#readme"
+}

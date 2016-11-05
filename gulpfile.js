@@ -4,10 +4,19 @@ var gulp = require('gulp');
 var minimist = require('minimist');
 var fs = require('fs');
 
+/**
+ * 获取当前系统环境
+ */
+var ENV = (process.env['XConfigENV'] || '').toUpperCase();
+if (!ENV) {
+    throw '请配置系统环境变量【XConfigENV】，如：DEV/FAT/PRD！';
+}
+console.log(`当前所在系统环境为：【${ENV}】！`);
 
-var ENV = "PRD";
+/**
+ * 命令行参数
+ */
 var options = minimist(process.argv.slice(2));
-
 
 /**
  * 文件操作
@@ -23,14 +32,10 @@ var f = {
     }
 };
 
-
-
-
 /**
  * 默认task
  */
 var defaultTask = function () {
-
     console.log('开始执行XConfig配置任务...');
 
     if (!options.xconfig) {
@@ -54,7 +59,6 @@ var defaultTask = function () {
     }
 
     Object.keys(xconfigData.configs).forEach(k => {
-
         var m = xconfigData.configs[k];
         console.log('正在处理：' + m.name);
 
@@ -72,19 +76,9 @@ var defaultTask = function () {
             f.writeFileSync(cf.target, eval('`' + content + '`'))
             console.log(`文件已生成：${cf.target}。`);
         });
-
-
     });
-
-
-
 };
 
-
-
 gulp.task('default', function () {
-
     defaultTask.apply(this, arguments);
-
 });
-
