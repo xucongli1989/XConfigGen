@@ -3,20 +3,16 @@
 var gulp = require('gulp');
 var minimist = require('minimist');
 var fs = require('fs');
+var options = minimist(process.argv.slice(2));//命令行参数
 
 /**
  * 获取当前系统环境
  */
-var ENV = (process.env['XConfigENV'] || '').toUpperCase();
+var ENV = (process.env['XConfigGenENV'] || '').toUpperCase();
 if (!ENV) {
-    throw '请配置系统环境变量【XConfigENV】，如：DEV/FAT/PRD！';
+    throw '请配置系统环境变量【XConfigGenENV】，如：DEV/FAT/PRD！';
 }
 console.log(`当前所在系统环境为：【${ENV}】！`);
-
-/**
- * 命令行参数
- */
-var options = minimist(process.argv.slice(2));
 
 /**
  * 文件操作
@@ -44,36 +40,24 @@ var defaultTask = function () {
 
     console.log('输入的xconfig参数为：' + options.xconfig);
 
-    //获取XConfigGen配置信息
-    console.log('正在获取XConfigGen配置信息...');
+    console.log('正在读取XConfigGen配置信息...');
     var xconfigData = JSON.parse(f.readFileSync(options.xconfig));
     if (!xconfigData) {
         throw '请提供有效的XConfigGen配置文件信息！';
-    }
-
-    //获取环境模板
-    console.log('正在获取环境模板...');
-    var envData = JSON.parse(f.readFileSync(xconfigData.tpl));
-    if (!envData) {
-        throw `请提供有效的环境模板信息（${xconfigData.tpl}）！`;
     }
 
     Object.keys(xconfigData.configs).forEach(k => {
         var m = xconfigData.configs[k];
         console.log('正在处理：' + m.name);
 
-        var tplObj = envData[k];
-        if (!tplObj) {
-            throw `请在主模板中配置【${k}】节点信息！`;
-        }
-        var config = tplObj[ENV];
+        var config = m.val[ENV];
         if (!config) {
-            throw `主模板配置文件中必须要提供环境${ENV}的配置信息！`;
+            throw `配置文件中必须要提供【${m.name}】在环境【${ENV}】的配置信息！`;
         }
 
         m.cfg.forEach(cf => {
             var content = f.readFileSync(cf.source);
-            f.writeFileSync(cf.target, eval('`' + content + '`'))
+            f.writeFileSync(cf.target, eval('`' + content + '`'));
             console.log(`文件已生成：${cf.target}。`);
         });
     });

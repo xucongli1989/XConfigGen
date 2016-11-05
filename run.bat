@@ -1,2 +1,1 @@
-gulp --xconfig  ".\\test\\XConfigGen-Config.json"
-pause
+gulp --gulpfile %XConfigGenPath% --xconfig  ".\\test\\XConfigGen-Config.json"
