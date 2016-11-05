@@ -1,2 +1,2 @@
-gulp --configs '[{"aaa":"bbb"}]'
+gulp --xconfig  ".\\test\\XConfigGen-Config.json"
 pause

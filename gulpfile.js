@@ -9,92 +9,82 @@ var ENV = "PRD";
 var options = minimist(process.argv.slice(2));
 
 
-var cfgs = [{
-    "name": "appSettings配置信息",
-    "tpl": "D:\\MyData\\MyGit\\GitHub\\XConfigGen\\test\\xconfig.json",
-    "cfg": [{
-        "path": "D:\\MyData\\MyGit\\GitHub\\XConfigGen\\test\\appSettings.config.tpl",
-        "out": "D:\\MyData\\MyGit\\GitHub\\XConfigGen\\test\\appSettings.config"
-    }]
-}];
+/**
+ * 文件操作
+ */
+var f = {
+    readFileSync: function (path) {
+        path = path.replace(/^\.\\/, __dirname + '\\');
+        return fs.readFileSync(path, 'utf-8');
+    },
+    writeFileSync: function (path, txt) {
+        path = path.replace(/^\.\\/, __dirname + '\\');
+        fs.writeFileSync(path, txt, 'utf-8');
+    }
+};
 
 
-gulp.task('default', function() {
 
-    console.log('开始执行XConfig配置任务');
 
-    if (!options.configs) {
-        throw '必须提供配置参数：configs';
+/**
+ * 默认task
+ */
+var defaultTask = function () {
+
+    console.log('开始执行XConfig配置任务...');
+
+    if (!options.xconfig) {
+        throw '必须提供XConfigGen配置文件路径！';
     }
 
-    var data = (function() {
-        try {
-            return JSON.parse(options.configs)
-        } catch (e) {
-            return null;
-        }
-    })();
-    if (!data) {
-        throw 'configs参数必须为json格式！';
+    console.log('输入的xconfig参数为：' + options.xconfig);
+
+    //获取XConfigGen配置信息
+    console.log('正在获取XConfigGen配置信息...');
+    var xconfigData = JSON.parse(f.readFileSync(options.xconfig));
+    if (!xconfigData) {
+        throw '请提供有效的XConfigGen配置文件信息！';
     }
 
-    data = cfgs;
+    //获取环境模板
+    console.log('正在获取环境模板...');
+    var envData = JSON.parse(f.readFileSync(xconfigData.tpl));
+    if (!envData) {
+        throw `请提供有效的环境模板信息（${xconfigData.tpl}）！`;
+    }
 
+    Object.keys(xconfigData.configs).forEach(k => {
 
-    data.forEach(m => {
-
+        var m = xconfigData.configs[k];
         console.log('正在处理：' + m.name);
 
-        if (!m.tpl) {
-            throw '必须指定tpl参数！';
+        var tplObj = envData[k];
+        if (!tplObj) {
+            throw `请在主模板中配置【${k}】节点信息！`;
         }
-        if (!m.cfg || m.cfg.length == 0) {
-            throw '必须指定cfg参数！';
+        var config = tplObj[ENV];
+        if (!config) {
+            throw `主模板配置文件中必须要提供环境${ENV}的配置信息！`;
         }
 
-        //读取tpl
-        var tplObj = null;
-        fs.readFile(m.tpl, function(err, d) {
-            tplObj = JSON.parse(d.toString());
-
-            if (!tplObj) {
-                throw '请指定有效的主模板内容！';
-            }
-
-
-            if (!tplObj.hasOwnProperty(ENV)) {
-                throw `主模板配置文件中必须要提供环境${ENV}的配置信息！`;
-            }
-
-
-            //each cfg 
-
-
+        m.cfg.forEach(cf => {
+            var content = f.readFileSync(cf.source);
+            f.writeFileSync(cf.target, eval('`' + content + '`'))
+            console.log(`文件已生成：${cf.target}。`);
         });
-
-
-
-
-
 
 
     });
 
 
 
+};
 
 
 
+gulp.task('default', function () {
 
-
-
-
-
-
-
-
-
-    console.log(options);
+    defaultTask.apply(this, arguments);
 
 });
 

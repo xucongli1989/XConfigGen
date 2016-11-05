@@ -2,5 +2,5 @@
 <appSettings>
     <add key="HostUrl" value="${config.HostUrl}" />
     <add key="AppID" value="${config.AppID}" />
-    <add key="SysEnvironment" value="${config.SysEnvironment}" />
+    <add key="SysEnvironment" value="${ENV}" />
 </appSettings>

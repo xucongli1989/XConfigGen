@@ -1,0 +1,38 @@
+{
+    "appSettings": {
+        "DEV": {
+            "HostUrl": "http://www.dev.com",
+            "AppID": "100",
+            "Name": "这是开发环境"
+        },
+        "FAT": {
+            "HostUrl": "http://www.fat.com",
+            "AppID": "101",
+            "Name": "这是测试环境"
+        },
+        "UAT": {
+            "HostUrl": "http://www.uat.com",
+            "AppID": "102",
+            "Name": "这是仿真环境"
+        },
+        "PRD": {
+            "HostUrl": "http://www.prd.com",
+            "AppID": "103",
+            "Name": "这是生产环境"
+        }
+    },
+    "connectionStrings": {
+        "DEV": {
+            "connectionString": "dev.db.com"
+        },
+        "FAT": {
+            "connectionString": "fat.db.com"
+        },
+        "UAT": {
+            "connectionString": "uat.db.com"
+        },
+        "PRD": {
+            "connectionString": "prd.db.com"
+        }
+    }
+}
