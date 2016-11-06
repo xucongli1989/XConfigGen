@@ -29,7 +29,7 @@
 		            "name": "appSettings配置信息",
 		            "cfg": [
 		                {
-		                    "source": "${ROOT_PATH}appSettings.config.tpl",,//配置文件模板路径
+		                    "source": "${ROOT_PATH}appSettings.config.tpl",//配置文件模板路径
 		                    "target": "${ROOT_PATH}appSettings.config"//最终生成的配置文件路径
 		                }
 		            ],
@@ -96,7 +96,15 @@
 
 
 	
-参数说明：gulpfile：本程序的入口文件路径；xconfig：本程序的配置文件路径；rootpath：待处理的配置文件根路径，如果在xconfig中使用了绝对路径，则此参数可以不指定。具体可以参见test文件夹中的示例。
+**参数说明：**
+
+gulpfile：本程序的入口文件路径；
+
+xconfig：本程序的配置文件路径；
+
+rootpath：待处理的配置文件根路径，如果在xconfig中使用了绝对路径，则此参数可以不指定。
+
+具体可以参见test文件夹中的示例。
 
 注：可以在Visual Studio的生成事件中加入此命令（或bat）来自动生成您的配置文件。
 
