@@ -4,8 +4,8 @@
             "name": "appSettings配置信息",
             "cfg": [
                 {
-                    "source": ".\\test\\appSettings.config.tpl",
-                    "target": ".\\test\\appSettings.config"
+                    "source": "${ROOT_PATH}appSettings.config.tpl",
+                    "target": "${ROOT_PATH}appSettings.config"
                 }
             ],
             "val": {
@@ -35,8 +35,8 @@
             "name": "connectionStrings配置信息",
             "cfg": [
                 {
-                    "source": ".\\test\\connectionStrings.config.tpl",
-                    "target": ".\\test\\connectionStrings.config"
+                    "source": "${ROOT_PATH}connectionStrings.config.tpl",
+                    "target": "${ROOT_PATH}connectionStrings.config"
                 }
             ],
             "val": {

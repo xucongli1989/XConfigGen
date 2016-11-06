@@ -5,6 +5,10 @@ var minimist = require('minimist');
 var fs = require('fs');
 var options = minimist(process.argv.slice(2));//命令行参数
 
+var XCONFIG_PATH = String.raw`${options.xconfig || ''}`;//XConfigGen配置文件所在路径
+var PATH = String.raw`${options.rootpath || ''}`;//待处理的配置文件所在根路径
+var ROOT_PATH = PATH.replace(/\\/g, '\\\\');//将PATH中的\替换为\\
+
 /**
  * 获取当前系统环境
  */
@@ -14,10 +18,20 @@ if (!ENV) {
 }
 console.log(`当前所在系统环境为：【${ENV}】！`);
 
+
 /**
- * 文件操作
+ * 验证是否已输入配置文件路径
  */
-var f = {
+if (!XCONFIG_PATH) {
+    throw '请提供XConfigGen的配置文件路径！';
+}
+console.log(`XConfigGen的配置文件路为：${XCONFIG_PATH}`);
+
+
+/**
+ * 公共方法
+ */
+var lib = {
     readFileSync: function (path) {
         path = path.replace(/^\.\\/, __dirname + '\\');
         return fs.readFileSync(path, 'utf-8');
@@ -32,16 +46,14 @@ var f = {
  * 默认task
  */
 var defaultTask = function () {
-    console.log('开始执行XConfig配置任务...');
-
-    if (!options.xconfig) {
-        throw '必须提供XConfigGen配置文件路径！';
-    }
-
-    console.log('输入的xconfig参数为：' + options.xconfig);
-
+    console.log('开始执行配置任务...');
     console.log('正在读取XConfigGen配置信息...');
-    var xconfigData = JSON.parse(f.readFileSync(options.xconfig));
+
+    var xconfigContent = lib.readFileSync(XCONFIG_PATH);
+    xconfigContent = eval('`' + xconfigContent + '`');
+    console.log(xconfigContent);
+
+    var xconfigData = JSON.parse(xconfigContent);
     if (!xconfigData) {
         throw '请提供有效的XConfigGen配置文件信息！';
     }
@@ -56,8 +68,8 @@ var defaultTask = function () {
         }
 
         m.cfg.forEach(cf => {
-            var content = f.readFileSync(cf.source);
-            f.writeFileSync(cf.target, eval('`' + content + '`'));
+            var content = lib.readFileSync(cf.source);
+            lib.writeFileSync(cf.target, eval('`' + content + '`'));
             console.log(`文件已生成：${cf.target}。`);
         });
     });
