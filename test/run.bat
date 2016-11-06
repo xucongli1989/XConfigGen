@@ -1,5 +1,5 @@
-:batæ‰€åœ¨ç›®å½•
+:batËùÔÚÄ¿Â¼
 set XConfigGenBatPath=%~dp0
-:æ‰§è¡Œgulpå‘½ä»¤
+:Ö´ĞĞgulpÃüÁî
 gulp --gulpfile %XConfigGenPath% --xconfig  %XConfigGenBatPath%XConfigGen-Config.json --rootpath %XConfigGenBatPath%
 pause
