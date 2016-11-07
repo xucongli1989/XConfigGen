@@ -1,6 +1,6 @@
 {
   "name": "xconfiggen",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "这是一个用于生成不同环境的项目配置文件的小命令行工具，比如：需要在开发环境、测试环境、生产环境生成节点相同但内容不同的配置文件。 ",
   "main": "index.js",
   "directories": {
