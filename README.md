@@ -5,8 +5,6 @@
 ## 环境准备
 
 - NodeJS
-- npm
-- gulp
 
 ## 原理
 
@@ -17,7 +15,7 @@
 ### 一、添加环境变量
 
 - 当前系统所在环境：**XConfigENV=DEV**
-- XConfigGen程序入口：**XConfigGenPath=D:\MyData\MyGit\GitHub\XConfigGen\gulpfile.js**
+- XConfigGen程序入口：**XConfigGenPath=D:\MyData\MyGit\GitHub\XConfigGen\index.js**
 
 ### 二、添加配置文件
 
@@ -91,14 +89,12 @@
 	:bat所在目录
 	set XConfigGenBatPath=%~dp0
 	:执行gulp命令
-	gulp --gulpfile %XConfigGenPath% --xconfig  %XConfigGenBatPath%XConfigGen-Config.json --rootpath %XConfigGenBatPath%
-	pause
+	node %XConfigGenPath% --xconfig  %XConfigGenBatPath%XConfigGen-Config.json --rootpath %XConfigGenBatPath%
+	:pause
 
 
 	
 **参数说明：**
-
-gulpfile：本程序的入口文件路径；
 
 xconfig：本程序的配置文件路径；
 
