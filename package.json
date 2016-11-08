@@ -1,11 +1,8 @@
 {
   "name": "xconfiggen",
   "version": "1.1.0",
-  "description": "这是一个用于生成不同环境的项目配置文件的小命令行工具，比如：需要在开发环境、测试环境、生产环境生成节点相同但内容不同的配置文件。 ",
+  "description": "这是一个基于nodejs，用于生成不同环境项目配置文件的小工具，比如：在开发环境、测试环境和生产环境生成节点相同但内容不同的配置文件，省去了手工修改配置内容的麻烦事。 ",
   "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
   "dependencies": {},
   "devDependencies": {
     "minimist": "^1.2.0"
@@ -13,11 +10,15 @@
   "scripts": {
     "test": "node"
   },
+ "keywords": [
+    "XConfigGen",
+    "config"
+  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/xucongli1989/XConfigGen.git"
+    "url": "git+https://github.com/xucongli1989/XConfigGen.git"
   },
-  "author": "",
+  "author": "80213876@qq.com",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/xucongli1989/XConfigGen/issues"
