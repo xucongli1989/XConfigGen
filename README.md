@@ -2,6 +2,10 @@
 
 这是一个基于nodejs，用于生成不同环境项目配置文件的小工具，比如：在开发环境、测试环境和生产环境生成节点相同但内容不同的配置文件，省去了手工修改配置内容的麻烦事。
 
+## npm
+
+https://www.npmjs.com/package/xconfiggen
+
 ## 环境准备
 
 - NodeJS
