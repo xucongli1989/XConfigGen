@@ -18,7 +18,7 @@ https://www.npmjs.com/package/xconfiggen
 
 ### 一、添加环境变量
 
-- 当前系统所在环境：**XConfigENV=DEV**
+- 当前系统所在环境：**XConfigGenENV=DEV**
 - XConfigGen程序入口：**XConfigGenPath=D:\MyData\MyGit\GitHub\XConfigGen\index.js**
 
 ### 二、添加配置文件
