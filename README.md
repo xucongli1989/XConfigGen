@@ -104,6 +104,6 @@ rootpath：待处理的配置文件根路径，如果在 xconfig 中使用了绝
 
 ## 示例截图
 
-![](/src/imgs/1.jpg)
+![](/doc/imgs/1.jpg)
 
-![](/src/imgs/2.jpg)
+![](/doc/imgs/2.jpg)

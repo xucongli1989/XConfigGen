@@ -3,15 +3,33 @@
   "version": "1.1.4",
   "description": "这是一个基于nodejs，用于生成不同环境项目配置文件的小工具，比如：在开发环境、测试环境和生产环境生成节点相同但内容不同的配置文件，省去了手工修改配置内容的麻烦事。 ",
   "main": "./src/index.js",
-  "dependencies": {
-    "minimist": "^1.2.0"
-  },
-  "devDependencies": {},
   "scripts": {
-    "test": "node"
+    "check": "x-code-inspect",
+    "dist": "npm run check && webpack --mode=production --progress"
+  },
+  "dependencies": {
+    "minimist": "1.2.6"
+  },
+  "devDependencies": {
+    "babel-loader": "8.2.4",
+    "@typescript-eslint/eslint-plugin": "5.16.0",
+    "@typescript-eslint/parser": "5.16.0",
+    "babel-eslint": "10.1.0",
+    "eslint": "8.12.0",
+    "eslint-config-airbnb": "19.0.4",
+    "eslint-config-airbnb-typescript": "16.1.4",
+    "eslint-plugin-import": "2.25.4",
+    "eslint-plugin-jsx-a11y": "6.5.1",
+    "eslint-plugin-react": "7.29.4",
+    "eslint-plugin-react-hooks": "4.3.0",
+    "prettier": "2.6.1",
+    "typescript": "4.6.3",
+    "webpack": "5.70.0",
+    "x-code-inspect": "1.4.0",
+    "x-package-version-strict-check": "1.7.0"
   },
   "bin": {
-    "xconfiggen": "./src/cmd.js"
+    "xconfiggen": "./cmd.js"
   },
   "keywords": [
     "XConfigGen",
