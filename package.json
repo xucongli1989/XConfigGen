@@ -11,7 +11,8 @@
     "ct": "git add -A && git-cz -a"
   },
   "dependencies": {
-    "minimist": "1.2.6"
+    "minimist": "1.2.6",
+    "mustache": "4.2.0"
   },
   "devDependencies": {
     "@babel/cli": "7.17.6",
@@ -21,6 +22,7 @@
     "@babel/plugin-transform-async-to-generator": "7.16.8",
     "@babel/preset-env": "7.16.11",
     "@babel/preset-typescript": "7.16.7",
+    "@types/mustache": "4.1.2",
     "@typescript-eslint/eslint-plugin": "5.17.0",
     "@typescript-eslint/parser": "5.17.0",
     "babel-eslint": "10.1.0",

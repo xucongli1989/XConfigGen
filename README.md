@@ -86,14 +86,16 @@ npm i -g xconfiggen
 
 ## 四、准备各个配置的模板文件
 
+这里使用 `mustache` 作为模板解析引擎。
+
 > appSettings.config.tpl
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?> 
 <appSettings>
-    <add key="HostUrl" value="${config.HostUrl}" />
-    <add key="AppID" value="${config.AppID}" />
-    <add key="SysEnvironment" value="${ENV}" />
+    <add key="HostUrl" value="{{config.HostUrl}}" />
+    <add key="AppID" value="{{config.AppID}}" />
+    <add key="SysEnvironment" value="{{ENV}}" />
 </appSettings>
 ```
 
@@ -102,7 +104,7 @@ npm i -g xconfiggen
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <connectionStrings>
-  <add name="ConnectionString" connectionString="${config.connectionString}" providerName="System.Data.SqlClient" />
+  <add name="ConnectionString" connectionString="{{config.connectionString}}" providerName="System.Data.SqlClient" />
 </connectionStrings>
 ```
 
