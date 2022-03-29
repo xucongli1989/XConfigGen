@@ -1,0 +1,15 @@
+**/*.*
+!**/*.js
+!**/*.jsx
+!**/*.less
+!**/*.sass
+!**/*.scss
+!**/*.ts
+!**/*.tsx
+**/node_modules/**
+**/dist/**
+**/build/**
+**/.ares/**
+lib/**
+/*
+!/src
