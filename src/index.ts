@@ -7,6 +7,7 @@ import { ConfigDataType } from "./type"
 
 const options = minimist(process.argv.slice(2)) //命令行参数
 const XCONFIG_PATH = String.raw`${options.xconfig || ""}` //XConfigGen配置文件所在路径
+const XCONFIG_DIR_PATH = path.dirname(XCONFIG_PATH)
 
 /**
  * 获取当前系统环境
@@ -30,10 +31,10 @@ console.log(`当前配置数据源路径是：${XCONFIG_PATH}`)
  */
 const lib = {
     readFileSync: (p: string) => {
-        return fs.readFileSync(path.resolve(p), "utf-8")
+        return fs.readFileSync(path.resolve(XCONFIG_DIR_PATH, p), "utf-8")
     },
     writeFileSync: (p: string, txt: string) => {
-        fs.writeFileSync(path.resolve(p), txt, "utf-8")
+        fs.writeFileSync(path.resolve(XCONFIG_DIR_PATH, p), txt, "utf-8")
     }
 }
 
